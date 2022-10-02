@@ -26,12 +26,6 @@ class Training:
     """Базовый класс тренировки."""
     LEN_STEP = 0.65
     M_IN_KM = 1000
-    coeff_calorie_1 = 18
-    coeff_calorie_2 = 20
-    coeff_calorie_3 = 0.035
-    coeff_calorie_4 = 2
-    coeff_calorie_5 = 0.029
-    coeff_calorie_6 = 1.1
     minuits_in_hour = 60
 
     """"Константа для перевода значений из метров в километры"""
@@ -68,6 +62,8 @@ class Training:
 
 
 class Running(Training):
+    coeff_calorie_1 = 18
+    coeff_calorie_2 = 20
     """Тренировка: бег."""
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
@@ -77,6 +73,9 @@ class Running(Training):
 
 
 class SportsWalking(Training):
+    coeff_calorie_3 = 0.035
+    coeff_calorie_4 = 2
+    coeff_calorie_5 = 0.029
     """Тренировка: спортивная ходьба."""
     def __init__(self,
                  action: int,
@@ -98,6 +97,8 @@ class SportsWalking(Training):
 class Swimming(Training):
     """Тренировка: плавание."""
     LEN_STEP = 1.38
+    coeff_calorie_4 = 2
+    coeff_calorie_6 = 1.1
 
     def __init__(self,
                  action: int,
@@ -128,9 +129,9 @@ def read_package(workout_type: str, data: list) -> Training:
         'RUN': Running,
         'WLK': SportsWalking
     }
+    if workout_type not in library_training:
+        raise ValueError('Неверный тип тренировки')
     return library_training[workout_type](*data)
-    if workout_type != library_training:
-        raise KeyError('Неверный тип тренировки')
 
 
 def main(training: Training) -> None:
