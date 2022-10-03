@@ -26,7 +26,7 @@ class Training:
     """Базовый класс тренировки."""
     LEN_STEP = 0.65
     M_IN_KM = 1000
-    minuits_in_hour = 60
+    MINUITS_IN_HOUR = 60
 
     """"Константа для перевода значений из метров в километры"""
     def __init__(self,
@@ -62,8 +62,8 @@ class Training:
 
 
 class Running(Training):
-    coeff_calorie_1 = 18
-    coeff_calorie_2 = 20
+    COEFF_CALORIE_1 = 18
+    COEFF_CALORIE_2 = 20
     """Тренировка: бег."""
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
@@ -73,9 +73,9 @@ class Running(Training):
 
 
 class SportsWalking(Training):
-    coeff_calorie_3 = 0.035
-    coeff_calorie_4 = 2
-    coeff_calorie_5 = 0.029
+    COEFF_CALORIE_3 = 0.035
+    COEFF_CALORIE_4 = 2
+    COEFF_CALORIE_5 = 0.029
     """Тренировка: спортивная ходьба."""
     def __init__(self,
                  action: int,
@@ -97,8 +97,8 @@ class SportsWalking(Training):
 class Swimming(Training):
     """Тренировка: плавание."""
     LEN_STEP = 1.38
-    coeff_calorie_4 = 2
-    coeff_calorie_6 = 1.1
+    COEFF_CALORIE_4 = 2
+    COEFF_CALORIE_6 = 1.1
 
     def __init__(self,
                  action: int,
